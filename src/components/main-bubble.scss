@@ -1,0 +1,42 @@
+$primary-color: #ffffff;
+$border-color: #19b8fc;
+$element-size: 45px;
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.array {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+}
+.array-element {
+    $primary-color: #ffffff;
+    $border-color: #00acf3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: $element-size;
+    min-height: $element-size;
+    background-color: $primary-color;
+    border: 2px solid $border-color;
+    border-radius: 4px;
+    font-size: 1.4rem;
+    transition: transform 0.5s;
+}
+.array-element.active {
+    border-color: #fe3b3b;
+}
+.array-element.sorted {
+    border-color: #6b0898;
+}
