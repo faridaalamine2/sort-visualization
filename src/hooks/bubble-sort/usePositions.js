@@ -1,20 +1,18 @@
 import { useState } from "react";
-import { moveFront, moveBack } from "../../utilities/animationUtils";
 import { getInitialMovements, swap } from "../../utilities/arrayUtils";
-function useMovements(array) {
-    const [elementMovements, setMovements] = useState(
+function usePositions(array) {
+    const [elementPositions, setPositions] = useState(
         getInitialMovements(array)
     );
     const swapElements = (tempArray, currentIndex, adjacentIndex) => {
         const current = tempArray[currentIndex];
         const adjacent = tempArray[adjacentIndex];
-        setMovements((prev) => {
-            prev[current] = moveFront(prev[current]);
-            prev[adjacent] = moveBack(prev[adjacent]);
+        setPositions((prev) => {
+            swap(prev, current, adjacent);
             swap(tempArray, currentIndex, currentIndex + 1);
             return { ...prev };
         });
     };
-    return [elementMovements, swapElements];
+    return [elementPositions, swapElements];
 }
-export default useMovements;
+export default usePositions;

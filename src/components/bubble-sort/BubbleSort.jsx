@@ -1,12 +1,11 @@
-import { useState } from "react";
-import "./main-bubble.scss";
-import ArrayElement from "./ArrayElement";
-import { generateRandomArray } from "../utilities/arrayUtils";
-import useBubbleSort from "../hooks/bubble-sort/useBubbleSort";
+import { useMemo } from "react";
+import ArrayElement from "../ArrayElement";
+import { generateRandomArray } from "../../utilities/arrayUtils";
+import useBubbleSort from "../../hooks/bubble-sort/useBubbleSort";
 
 function BubbleSort() {
-    const [array] = useState(generateRandomArray());
-    const [currentComparisons, sortedElements, elementMovements, startSort] =
+    const array = useMemo(() => generateRandomArray(), []);
+    const [currentComparisons, sortedElements, elementPositions, startSort] =
         useBubbleSort(array);
     const renderElements = array.map((element) => {
         let active;
@@ -18,7 +17,7 @@ function BubbleSort() {
                 element={element}
                 active={active}
                 sorted={sorted}
-                move={elementMovements[element]}
+                left={elementPositions[element]}
                 key={element}
             />
         );

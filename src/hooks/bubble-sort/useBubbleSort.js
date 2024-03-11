@@ -1,10 +1,10 @@
-import { useState } from "react";
-import { runWithDelay } from "../../utilities/animationUtils";
-import useMovements from "./useMovements";
+import { useState, useMemo } from "react";
+import { delay } from "../../utilities/animationUtils";
+import usePositions from "./usePositions";
 import useSortedElements from "./useSortedElements";
 function useBubbleSort(array) {
-    const tempArray = Array.from(array);
-    const [elementMovements, swapElements] = useMovements(array);
+    const tempArray = useMemo(() => Array.from(array), [array]);
+    const [elementPositions, swapElements] = usePositions(array);
     const [sortedElements, addToSortedElements, setArrayAsSorted] =
         useSortedElements();
     const [currentComparisons, setCurrentComparisons] = useState([]);
@@ -24,9 +24,10 @@ function useBubbleSort(array) {
         const isSorted = true;
         const [firstElement, secElement] = [tempArray[0], tempArray[1]];
         setCurrentComparisons([firstElement, secElement]);
-        runWithDelay(() => compareAdjacent(0, unsortedLength, isSorted));
+        compareAdjacent(0, unsortedLength, isSorted);
     }
-    function compareAdjacent(currentIndex, unsortedLength, isSorted) {
+    async function compareAdjacent(currentIndex, unsortedLength, isSorted) {
+        await delay();
         const current = tempArray[currentIndex];
         if (currentIndex === unsortedLength - 1) {
             addToSortedElements(current);
@@ -39,10 +40,8 @@ function useBubbleSort(array) {
             isSorted = false;
             swapElements(tempArray, currentIndex, currentIndex + 1);
         }
-        runWithDelay(() =>
-            compareAdjacent(currentIndex + 1, unsortedLength, isSorted)
-        );
+        compareAdjacent(currentIndex + 1, unsortedLength, isSorted);
     }
-    return [currentComparisons, sortedElements, elementMovements, startSort];
+    return [currentComparisons, sortedElements, elementPositions, startSort];
 }
 export default useBubbleSort;

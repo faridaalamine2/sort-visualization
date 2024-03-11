@@ -16,9 +16,10 @@ body {
     justify-content: center;
 }
 .array {
-    display: flex;
-    gap: 10px;
+    width: 70vh;
+    height: $element-size;
     padding: 10px;
+    position: relative;
 }
 .array-element {
     $primary-color: #ffffff;
@@ -32,11 +33,17 @@ body {
     border: 2px solid $border-color;
     border-radius: 4px;
     font-size: 1.4rem;
-    transition: transform 0.5s;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: left 0.45s;
 }
 .array-element.active {
     border-color: #fe3b3b;
 }
 .array-element.sorted {
     border-color: #6b0898;
+}
+.array-element.min {
+    border-color: #fbff25;
 }
