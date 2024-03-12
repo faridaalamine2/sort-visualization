@@ -1,10 +1,11 @@
 import { useState } from "react";
-function useSortedElements() {
+
+function useSortedElements(array) {
     const [sortedElements, setSortedElements] = useState([]);
     const addToSortedElements = (element) => {
         setSortedElements((prev) => [...prev, element]);
     };
-    const setArrayAsSorted = (array) => {
+    const setArrayAsSorted = () => {
         setSortedElements(array);
     };
     return [sortedElements, addToSortedElements, setArrayAsSorted];

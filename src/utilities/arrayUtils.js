@@ -7,27 +7,27 @@ const getRandomNumber = () => {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 };
 const generateRandomArray = (length = 10) => {
-    // const array = [];
-    const array = [70, 65, 60, 55, 50, 40, 35, 25];
+    const array = [];
     let counter = 0;
-    // while (counter < length) {
-    //     const randomNumber = getRandomNumber();
-    //     if (array.includes(randomNumber)) continue;
-    //     array.push(randomNumber);
-    //     counter++;
-    // }
+    while (counter < length) {
+        const randomNumber = getRandomNumber();
+        if (array.includes(randomNumber)) continue;
+        array.push(randomNumber);
+        counter++;
+    }
     return array;
+    // return [70, 65, 60, 55, 50, 40, 35, 25];
 };
-const getInitialMovements = (array) => {
-    const elementMovements = {};
+const getInitialPositions = (array) => {
+    const elementPositions = {};
     for (let i = 0; i < array.length; i++) {
         const element = array[i];
-        elementMovements[element] = i * offset;
+        elementPositions[element] = i * offset;
     }
-    return elementMovements;
+    return elementPositions;
 };
 
 const swap = (array, index1, index2) => {
     [array[index1], array[index2]] = [array[index2], array[index1]];
 };
-export { generateRandomArray, getInitialMovements, swap };
+export { generateRandomArray, getInitialPositions, swap };

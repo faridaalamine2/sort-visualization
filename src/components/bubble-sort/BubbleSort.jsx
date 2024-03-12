@@ -17,7 +17,7 @@ function BubbleSort() {
                 element={element}
                 active={active}
                 sorted={sorted}
-                left={elementPositions[element]}
+                position={elementPositions[element]}
                 key={element}
             />
         );
