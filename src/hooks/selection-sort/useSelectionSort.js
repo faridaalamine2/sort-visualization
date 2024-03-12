@@ -36,7 +36,6 @@ function useSelectionSort(array) {
                 iterate(currIndex + 1, length);
                 return { ...prev };
             });
-            // swapElements(minIndex, currIndex, iterate);
         } else iterate(currIndex + 1, length);
     }
     async function getMin(currIndex, minIndex, length) {
