@@ -1,0 +1,24 @@
+.navbar {
+    background-color: rgba($color: #ffffff, $alpha: 0.4);
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 15px;
+    font-size: 1.3rem;
+    a {
+        color: white;
+        text-decoration: none;
+        font-size: 4vmin;
+        transition: 0.3s;
+        &:hover {
+            color: #143669;
+            text-decoration: underline;
+        }
+    }
+    a.active {
+        color: #143669;
+        text-decoration: underline;
+    }
+}

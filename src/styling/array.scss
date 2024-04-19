@@ -1,29 +1,42 @@
 $primary-color: #ffffff;
-$border-color: #19b8fc;
+$border-color: #c5e1ff;
 $element-size: 45px;
 
-* {
-    box-sizing: border-box;
-}
-body {
-    font-family: "Madimi One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-    height: 100vh;
-    margin: 0;
+.container {
+    height: 75vh;
     display: flex;
     align-items: center;
+    gap: 15px;
     justify-content: center;
+    flex-direction: column;
+    .buttons {
+        display: flex;
+        gap: 10px;
+    }
+    .button {
+        background-color: rgba($color: $primary-color, $alpha: 0.2);
+        padding: 6px 10px;
+        border-radius: 5px;
+        color: white;
+        transition: 0.3s;
+        cursor: pointer;
+        &:hover {
+            background-color: rgba($color: #000000, $alpha: 0.2);
+        }
+    }
+    .button.disabled {
+        opacity: 0.5;
+        pointer-events: none;
+    }
 }
 .array {
-    width: 70vh;
     height: $element-size;
-    padding: 10px;
     position: relative;
 }
 .array-element {
     $primary-color: #ffffff;
-    $border-color: #00acf3;
+    $border-color: #99bce1;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -36,13 +49,13 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-    transition: left 0.5s;
+    transition: left 0.4s;
 }
 .array-element.active {
     border-color: #fe3b3b;
 }
 .array-element.sorted {
-    border-color: #6b0898;
+    border-color: #5a20a5;
 }
 .array-element.min {
     border-color: #fbff25;

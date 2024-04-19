@@ -1,0 +1,61 @@
+body {
+    font-family: "Madimi One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    background: linear-gradient(135deg, #2055a5, #5e75a1, #6f8ab1, #c5e1ff);
+    color: white;
+    text-align: center;
+    height: 100vh;
+}
+.page-title {
+    margin: 0;
+    padding: 0.67em 0;
+    font-size: 5vmin;
+    @media (min-width: 782px) {
+        font-size: 6vmin;
+    }
+}
+.content {
+    padding: 10px;
+    @media (max-width: 700px) {
+        font-size: 0.9rem;
+    }
+}
+.available-sorts {
+    background-color: rgba($color: #ffffff, $alpha: 0.2);
+    margin: 0 auto;
+    padding: 5px;
+    border-radius: 15px;
+    @media (max-width: 600px) {
+        width: 90%;
+    }
+    @media (min-width: 600px) {
+        width: 65%;
+    }
+    @media (min-width: 800px) {
+        width: 30%;
+    }
+    .title {
+        font-size: 4vmin;
+    }
+}
+.algos-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style-type: none;
+    padding: 0;
+    a {
+        cursor: pointer;
+        width: fit-content;
+        transition: color 0.2s;
+        text-decoration: none;
+        color: white;
+        font-size: 3vmin;
+        &:hover {
+            color: #143669;
+            text-decoration: underline;
+        }
+    }
+}

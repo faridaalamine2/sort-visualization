@@ -1,5 +1,5 @@
 const elementWidth = 45; // in px
-const gap = 10; // in px
+const gap = 6; // in px
 const offset = elementWidth + gap;
 
 const getRandomNumber = () => {
@@ -16,7 +16,6 @@ const generateRandomArray = (length = 10) => {
         counter++;
     }
     return array;
-    // return [70, 65, 60, 55, 50, 40, 35, 25];
 };
 const getInitialPositions = (array) => {
     const elementPositions = {};
@@ -30,4 +29,22 @@ const getInitialPositions = (array) => {
 const swap = (array, index1, index2) => {
     [array[index1], array[index2]] = [array[index2], array[index1]];
 };
-export { generateRandomArray, getInitialPositions, swap };
+const getHalfArray = (arr) => {
+    if (arr.length === 1) return false;
+    const halfIndex = Math.ceil(arr.length / 2);
+    return arr.slice(0, halfIndex);
+};
+const getSecondHalf = (arr) => {
+    if (arr.length === 1) return false;
+    const halfIndex = Math.ceil(arr.length / 2);
+    return arr.slice(halfIndex);
+};
+export {
+    generateRandomArray,
+    offset,
+    gap,
+    getInitialPositions,
+    swap,
+    getHalfArray,
+    getSecondHalf,
+};

@@ -1,13 +1,14 @@
-import { useMemo } from "react";
+import { useState } from "react";
 import ArrayElement from "../ArrayElement";
-import { generateRandomArray } from "../../utilities/arrayUtils";
-import useBubbleSort from "../../hooks/bubble-sort/useBubbleSort";
-
+import { gap, generateRandomArray, offset } from "../../utilities/arrayUtils";
+import useBubbleSort from "../../hooks/useBubbleSort";
+import NavBar from "../NavBar";
 function BubbleSort() {
-    const array = useMemo(() => generateRandomArray(), []);
+    const [arrayToRender, setArray] = useState(generateRandomArray());
+    const [sortActive, setSortActive] = useState(false);
     const [currentComparisons, sortedElements, elementPositions, startSort] =
-        useBubbleSort(array);
-    const renderElements = array.map((element) => {
+        useBubbleSort(arrayToRender);
+    const renderElements = arrayToRender.map((element) => {
         let active;
         let sorted;
         if (currentComparisons.includes(element)) active = true;
@@ -24,8 +25,39 @@ function BubbleSort() {
     });
     return (
         <>
-            <div className="array">{renderElements}</div>
-            <button onClick={startSort}>sort</button>
+            <NavBar />
+            <div className="container">
+                <div
+                    className="array"
+                    style={{
+                        width: `${arrayToRender.length * offset - gap}px`,
+                    }}
+                >
+                    {renderElements}
+                </div>
+                <div className="buttons">
+                    <div
+                        className={!sortActive ? "button" : "button disabled"}
+                        onClick={() => {
+                            if (!sortActive) {
+                                setSortActive(true);
+                                startSort();
+                            }
+                        }}
+                    >
+                        Sort
+                    </div>
+                    <div
+                        className="button"
+                        onClick={() => {
+                            setArray(generateRandomArray());
+                            setSortActive(false);
+                        }}
+                    >
+                        Reset
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
