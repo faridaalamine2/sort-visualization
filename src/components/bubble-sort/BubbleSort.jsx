@@ -47,15 +47,6 @@ function BubbleSort() {
                     >
                         Sort
                     </div>
-                    <div
-                        className="button"
-                        onClick={() => {
-                            setArray(generateRandomArray());
-                            setSortActive(false);
-                        }}
-                    >
-                        Reset
-                    </div>
                 </div>
             </div>
         </>
