@@ -4,6 +4,7 @@ import SelectionSort from "./components/selection-sort/SelectionSort";
 import BubbleSort from "./components/bubble-sort/BubbleSort";
 import MergeSort from "./components/merge-sort/MergeSort";
 import "./styling/array.scss";
+//test
 function App() {
     return (
         <Routes>
